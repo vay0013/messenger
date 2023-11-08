@@ -23,6 +23,6 @@ public class Post {
 
     private String description;
 
-    private LocalDateTime createdAt;
+    private LocalDateTime createdAt = LocalDateTime.now();
 }
 

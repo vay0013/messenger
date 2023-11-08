@@ -1,11 +1,14 @@
 spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/messenger
-    username: vay
-    password: vay0013
+    username: postgres
+    password: postgres
     driver-class-name: org.postgresql.Driver
-  sql:
-    init:
-      mode: always
+  jpa:
+    hibernate:
+      ddl-auto: update
+#  sql:
+#    init:
+#      mode: always
 #      data-locations: classpath:
 
