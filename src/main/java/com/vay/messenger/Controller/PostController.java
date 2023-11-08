@@ -3,24 +3,22 @@ package com.vay.messenger.Controller;
 import com.vay.messenger.dto.PostDto;
 import com.vay.messenger.service.PostService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
+@RequestMapping("api/v1/")
 public class PostController {
     private final PostService postService;
 
-    @GetMapping
-    public PostDto getPost(Long id) {
+    @GetMapping("{id}")
+    public PostDto getPost(@PathVariable Long id) {
         return postService.findPostById(id);
     }
 
-    @PostMapping
+    @PostMapping("/create")
     public void createPost(PostDto dto) {
         postService.save(dto);
     }
@@ -30,8 +28,8 @@ public class PostController {
         return postService.findPosts();
     }
 
-    @DeleteMapping
-    public void deletePost(Long id) {
+    @DeleteMapping("{id}")
+    public void deletePost(@PathVariable Long id) {
         postService.delete(id);
     }
 }
