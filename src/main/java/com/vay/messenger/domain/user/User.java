@@ -29,7 +29,4 @@ public class User {
 
     @Enumerated(value = EnumType.STRING)
     private Set<Role> roles;
-
-
-
 }
