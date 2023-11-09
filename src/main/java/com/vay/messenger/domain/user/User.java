@@ -1,6 +1,9 @@
 package com.vay.messenger.domain.user;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -16,17 +19,20 @@ import java.util.Set;
 @Table(name = "users")
 public class User {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Size(min = 5, max = 20)
+    @NotBlank
     private String username;
 
+    @Email
+    @NotBlank
     private String email;
 
+    @NotBlank
     private String password;
 
-    @Transient
-    private String passwordConfirmation;
-
-    @Enumerated(value = EnumType.STRING)
-    private Set<Role> roles;
+//    @Enumerated(value = EnumType.STRING)
+//    private Set<Role> roles;
 }
