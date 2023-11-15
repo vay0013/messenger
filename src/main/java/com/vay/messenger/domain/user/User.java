@@ -28,7 +28,7 @@ public class User implements UserDetails {
 
     @Size(min = 5, max = 20)
     @NotBlank
-    private String username;
+    private String accountName;
 
     @Email
     @NotBlank
@@ -39,6 +39,10 @@ public class User implements UserDetails {
 
     @Enumerated(EnumType.STRING)
     private Role role;
+
+    public String getUsername() {
+        return email;
+    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

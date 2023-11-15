@@ -1,4 +1,4 @@
-package com.vay.messenger.Controller;
+package com.vay.messenger.controller;
 
 import com.vay.messenger.dto.PostDto;
 import com.vay.messenger.service.PostService;

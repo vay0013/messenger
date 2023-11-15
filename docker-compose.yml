@@ -1,19 +1,37 @@
 services:
   app:
     container_name: messenger
+    build: .
     image: messenger
-    build: ./
     ports:
-      - '8080:8080'
+      - "8080:8080"
     restart: unless-stopped
     depends_on:
       - db
   db:
+    container_name: postgresql-db
     image: postgres
-    restart: always
     ports:
-      - '8084:5432'
+      - "8084:5432"
+    restart: always
     environment:
       POSTGRES_USERNAME: postgres
       POSTGRES_PASSWORD: postgres
       POSTGRES_DB: messenger
+
+#https://stackoverflow:
+#  com/questions/33309121/using-docker-compose-to-create-tables-in-postgresql-database
+
+#      PGDATA: /data/postgres
+#    volumes:
+#      - /data/postgres
+#    ports:
+#      - "8084:5432"
+#    networks:
+#      - postgres
+#    restart: unless-stopped
+#volumes:
+#  postgres:
+#networks:
+#  postgres:
+#    driver: bridge
