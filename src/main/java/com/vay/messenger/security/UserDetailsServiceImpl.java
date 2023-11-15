@@ -1,4 +1,4 @@
-package com.vay.messenger.service;
+package com.vay.messenger.security;
 
 import com.vay.messenger.domain.user.User;
 import com.vay.messenger.domain.user.UserDetailsImpl;
@@ -9,14 +9,14 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-@Service
+@Service("userDetailsService")
 @RequiredArgsConstructor
-public class UserService implements UserDetailsService {
+public class UserDetailsServiceImpl implements UserDetailsService {
     private final UserRepository userRepository;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = userRepository.findUserByUsername(username).orElseThrow(() ->
+        User user = userRepository.findUserByEmail(username).orElseThrow(() ->
             new UsernameNotFoundException(String.format("User %s not found", username))
         );
         return UserDetailsImpl.build(user);
