@@ -1,5 +1,6 @@
-package com.vay.messenger.config;
+package com.vay.messenger.security;
 
+import com.vay.messenger.service.JwtService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

@@ -1,4 +1,4 @@
-package com.vay.messenger.config;
+package com.vay.messenger.service;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;

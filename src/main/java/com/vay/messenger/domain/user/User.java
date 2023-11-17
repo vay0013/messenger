@@ -28,7 +28,7 @@ public class User implements UserDetails {
 
     @Size(min = 5, max = 20)
     @NotBlank
-    private String accountName;
+    private String firstname;
 
     @Email
     @NotBlank
