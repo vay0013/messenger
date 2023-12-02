@@ -1,7 +1,7 @@
-package com.vay.messenger.mapper;
+package com.vay.messenger.web.mapper;
 
 import com.vay.messenger.domain.post.Post;
-import com.vay.messenger.dto.PostDto;
+import com.vay.messenger.web.dto.post.PostDto;
 import org.mapstruct.Mapper;
 
 @Mapper(componentModel = "spring")

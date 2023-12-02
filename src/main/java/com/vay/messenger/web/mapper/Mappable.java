@@ -1,4 +1,4 @@
-package com.vay.messenger.mapper;
+package com.vay.messenger.web.mapper;
 
 import java.util.List;
 

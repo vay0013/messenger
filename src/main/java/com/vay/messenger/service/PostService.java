@@ -1,35 +1,18 @@
 package com.vay.messenger.service;
 
-import com.vay.messenger.dto.PostDto;
-import com.vay.messenger.exception.NotFoundException;
-import com.vay.messenger.mapper.PostMapper;
-import com.vay.messenger.repository.PostRepository;
-import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
+import com.vay.messenger.domain.post.Post;
+import com.vay.messenger.web.dto.post.PostDto;
 
 import java.util.List;
 
-@Service
-@RequiredArgsConstructor
-public class PostService {
-    private final PostRepository postRepository;
-    private final PostMapper postMapper;
+public interface PostService {
+    Post create(Post post, Long userId);
 
-    public void save(PostDto dto) {
-        postRepository.save(postMapper.toEntity(dto));
-    }
+    Post update(Post post);
 
-    public PostDto findPostById(Long id) {
-        return postMapper.toDto(postRepository.findById(id).orElseThrow(() ->
-                        new NotFoundException("post not found")
-                ));
-    }
+    Post getById(Long id);
 
-    public List<PostDto> findPosts() {
-        return postMapper.toDto(postRepository.findAll());
-    }
+    List<Post> getAllByUserId(Long userId);
 
-    public void delete(Long id) {
-        postRepository.deleteById(id);
-    }
+    void delete(Long id);
 }
