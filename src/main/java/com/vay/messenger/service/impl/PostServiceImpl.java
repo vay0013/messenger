@@ -22,9 +22,8 @@ public class PostServiceImpl implements PostService {
     @Override
     @Transactional
     public Post create(Post post, Long userId) {
-        User user = userService.getById(userId);
-        user.getPosts().add(post);
-        userService.update(user);
+        postRepository.save(post);
+        postRepository.assignTask(userId, post.getId());
         return post;
     }
 

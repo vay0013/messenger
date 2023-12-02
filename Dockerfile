@@ -1,11 +1,11 @@
 FROM maven AS stage1
 WORKDIR /app
 COPY pom.xml /app
-RUN mvn dependency:resolve
 COPY . /app
-RUN mvn clean package -DskipTests
+RUN mvn clean package
+#    -DskipTests
 
 FROM openjdk:17 AS final
-COPY --from=stage1 app/target/messenger-0.1.jar app.jar
-EXPOSE 8084
+COPY --from=stage1 app/target/*.jar app.jar
+EXPOSE 8080
 ENTRYPOINT ["java", "-jar", "app.jar"]

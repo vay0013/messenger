@@ -28,7 +28,7 @@ public class AuthServiceImpl implements AuthService {
         );
         User user = userService.getByEmail(loginRequest.getEmail());
         jwtResponse.setId(user.getId());
-        jwtResponse.setUsername(user.getEmail());
+        jwtResponse.setEmail(user.getEmail());
         jwtResponse.setAccessToken(
                 jwtTokenProvider.createAccessToken(
                         user.getId(),

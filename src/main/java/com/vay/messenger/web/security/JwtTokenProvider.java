@@ -38,8 +38,8 @@ public class JwtTokenProvider {
         this.key = Keys.hmacShaKeyFor(jwtProperties.getSecret().getBytes());
     }
 
-    public String createAccessToken(Long userId, String username, Set<Role> roles) {
-        Claims claims = Jwts.claims().setSubject(username);
+    public String createAccessToken(Long userId, String email, Set<Role> roles) {
+        Claims claims = Jwts.claims().setSubject(email);
         claims.put("id", userId);
         claims.put("roles", resolveRoles(roles));
         Date now = new Date();
@@ -58,8 +58,8 @@ public class JwtTokenProvider {
                 .collect(Collectors.toList());
     }
 
-    public String createRefreshToken(Long userId, String username) {
-        Claims claims = Jwts.claims().setSubject(username);
+    public String createRefreshToken(Long userId, String email) {
+        Claims claims = Jwts.claims().setSubject(email);
         claims.put("id", userId);
         Date now = new Date();
         Date validity = new Date(now.getTime() + jwtProperties.getRefresh());
@@ -79,7 +79,7 @@ public class JwtTokenProvider {
         Long userId = Long.valueOf(getId(refreshToken));
         User user = userService.getById(userId);
         jwtResponse.setId(userId);
-        jwtResponse.setUsername(user.getEmail());
+        jwtResponse.setEmail(user.getEmail());
         jwtResponse.setAccessToken(createAccessToken(userId, user.getEmail(), user.getRoles()));
         jwtResponse.setRefreshToken(createRefreshToken(userId, user.getEmail()));
         return jwtResponse;

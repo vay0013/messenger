@@ -16,8 +16,9 @@ public class PostController {
     private final PostMapper postMapper;
 
     @GetMapping("{id}")
-    public PostDto getPostById(@PathVariable Long id) {
-        return postMapper.toDto(postService.getById(id));
+    public Post getPostById(@PathVariable Long id) {
+        Post post = postService.getById(id);
+        return post;
     }
 
     @PutMapping
