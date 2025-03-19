@@ -1,6 +1,6 @@
 FROM maven:3.9.9 AS builder
 WORKDIR /application
-COPY . .
+COPY .. .
 RUN --mount=type=cache,target=/root/.m2  mvn clean install -Dmaven.test.skip
 
 FROM bellsoft/liberica-openjre-alpine:17.0.13 AS layers

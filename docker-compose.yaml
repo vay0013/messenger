@@ -1,10 +1,10 @@
 services:
 
-  app:
+   app:
     container_name: app
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: article-service/Dockerfile
     restart: "no"
     ports:
       - "8080:8080"

@@ -1,10 +1,10 @@
-package com.vay.messanger;
+package com.vay.articleservice;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class MessengerApplicationTests {
+class ArticleServiceApplicationTests {
 
     @Test
     void contextLoads() {

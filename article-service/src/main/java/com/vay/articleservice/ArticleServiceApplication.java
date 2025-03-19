@@ -1,13 +1,13 @@
-package com.vay.messanger;
+package com.vay.articleservice;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class MessengerApplication {
+public class ArticleServiceApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(MessengerApplication.class, args);
+        SpringApplication.run(ArticleServiceApplication.class, args);
     }
 
 }
