@@ -1,26 +1,28 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/posts
+    url: jdbc:postgresql://posts-db:5432/posts
     username: admin
     password: admin
     driver-class-name: org.postgresql.Driver
 
   jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
     hibernate:
       ddl-auto: create-drop
+    show-sql: true
 
-  servlet:
-    multipart:
-      max-file-size: 10000MB
-      max-request-size: 10000MB
-streaming:
-  chunk:
-    default-size: 2621440 #-- in bytes
-minio:
-  url: http://localhost:9000
-  username: minio_admin
-  password: minio_admin
-  bucket:
-    name: videos
-  stream:
-    part-size: 5242880 #-- in bytes
+#  servlet:
+#    multipart:
+#      max-file-size: 10000MB
+#      max-request-size: 10000MB
+#streaming:
+#  chunk:
+#    default-size: 2621440 #-- in bytes
+#minio:
+#  url: http://localhost:9000
+#  username: minio_admin
+#  password: minio_admin
+#  bucket:
+#    name: videos
+#  stream:
+#    part-size: 5242880 #-- in bytes

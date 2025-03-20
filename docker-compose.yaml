@@ -67,9 +67,10 @@ services:
       - kc-db
     command:
       - "start-dev"
+      - "--import-realm"
 
   minio:
-    container_name: "video-streaming-minio"
+    container_name: "s3"
     image: quay.io/minio/minio
     command: server /data --console-address ":9001"
     ports:
