@@ -1,6 +1,6 @@
 services:
 
-   app:
+  app:
     container_name: app
     build:
       context: .
@@ -68,6 +68,19 @@ services:
     command:
       - "start-dev"
 
+  minio:
+    container_name: "video-streaming-minio"
+    image: quay.io/minio/minio
+    command: server /data --console-address ":9001"
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    volumes:
+      - minio-data:/data
+    environment:
+      MINIO_ROOT_USER: minio_admin
+      MINIO_ROOT_PASSWORD: minio_admin
+
 networks:
   app:
     driver: bridge
@@ -75,6 +88,8 @@ networks:
     driver: bridge
 
 volumes:
+  minio-data:
+    driver: local
   posts-data:
     driver: local
   kc_data:
