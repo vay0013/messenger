@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:postgresql://posts-db:5432/posts
+    url: jdbc:postgresql://localhost:5432/posts?currentSchema=article
     username: admin
     password: admin
     driver-class-name: org.postgresql.Driver
@@ -8,8 +8,14 @@ spring:
   jpa:
     database-platform: org.hibernate.dialect.PostgreSQLDialect
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: validate
     show-sql: true
+  flyway:
+    schemas:
+      - public
+      - article
+    baseline-on-migrate: true
+    baseline-version: 0
 
 #  servlet:
 #    multipart:

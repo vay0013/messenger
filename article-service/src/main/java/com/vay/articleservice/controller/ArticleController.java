@@ -5,6 +5,7 @@ import com.vay.articleservice.dto.UpdateArticleDto;
 import com.vay.articleservice.model.Article;
 import com.vay.articleservice.service.ArticleService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,6 +19,11 @@ public class ArticleController {
     @GetMapping
     public List<Article> getArticles() {
         return articleService.findAll();
+    }
+
+    @GetMapping("id")
+    public ResponseEntity<Article> getArticleById(@PathVariable long id) {
+        return ResponseEntity.ok(articleService.findById(id));
     }
 
     @PostMapping
