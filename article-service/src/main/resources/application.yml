@@ -11,9 +11,6 @@ spring:
       ddl-auto: validate
     show-sql: true
   flyway:
-    schemas:
-      - public
-      - article
     baseline-on-migrate: true
     baseline-version: 0
 

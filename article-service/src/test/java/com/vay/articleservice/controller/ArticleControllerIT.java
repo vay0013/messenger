@@ -36,12 +36,32 @@ class ArticleControllerIT {
                         status().isOk(),
                         content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON),
                         content().json("""
-                                {
-                                    "id": 1,
-                                    "title": "c1",
-                                    "details": "t1",
-                                    
-                                }""")
+                                [
+                                    {
+                                        "id": 1,
+                                        "title": "c1",
+                                        "content": "t1",
+                                        "createdAt": "2025-03-25T12:14:22.97372"
+                                    },
+                                    {
+                                        "id": 2,
+                                        "title": "c2",
+                                        "content": "t2",
+                                        "createdAt": "2025-03-25T12:14:22.97372"
+                                    },
+                                    {
+                                        "id": 3,
+                                        "title": "c3",
+                                        "content": "t3",
+                                        "createdAt": "2025-03-25T12:14:22.97372"
+                                    },
+                                    {
+                                        "id": 4,
+                                        "title": "c4",
+                                        "content": "t4",
+                                        "createdAt": "2025-03-25T12:14:22.97372"
+                                    }
+                                ]""")
                 );
     }
 
