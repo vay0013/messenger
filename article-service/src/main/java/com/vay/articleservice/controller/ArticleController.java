@@ -22,7 +22,7 @@ public class ArticleController {
     }
 
     @GetMapping("id")
-    public ResponseEntity<Article> getArticleById(@PathVariable long id) {
+    public ResponseEntity<Article> getArticleById(@RequestParam("id") Long id) {
         return ResponseEntity.ok(articleService.findById(id));
     }
 
